@@ -29,102 +29,102 @@ drop table if exists regatta_boats;
 --CREATE TABLES
 CREATE TABLE rowers
 (
-	rid SERIAL,
-	rname varchar(255),
+	rid SERIAL NOT NULL,
+	rname varchar(255) NOT NULL,
 	twok varchar(10),
 	PRIMARY KEY (rid)
 );
 CREATE TABLE coaches
 (
-	coid SERIAL,
-	coname varchar(255),
+	coid SERIAL NOT NULL,
+	coname varchar(255) NOT NULL,
 	alma_mater varchar(255),
 	PRIMARY KEY (coid)
 );
 CREATE TABLE oars
 (
-	oid SERIAL,
-	setid int,
-	load int,
-	blade varchar(255),
+	oid SERIAL NOT NULL,
+	setid int NOT NULL,
+	load int NOT NULL,
+	blade varchar(255) NOT NULL,
 	PRIMARY KEY (oid)
 );
 CREATE TABLE oar_sets
 (
-	setid SERIAL,
-	tape_color varchar(255),
+	setid SERIAL NOT NULL,
+	tape_color varchar(255) NOT NULL,
 	PRIMARY KEY (setid)
 );
 CREATE TABLE launches
 (
-	lid SERIAL,
-	lname varchar(255),
-	byear varchar(255),
+	lid SERIAL NOT NULL,
+	lname varchar(255) NOT NULL,
+	byear varchar(255) NOT NULL,
 	PRIMARY KEY (lid)
 );
 CREATE TABLE practice
 (
-	rid int,
-	sid int,
+	rid int NOT NULL,
+	sid int NOT NULL,
 	ptime timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
 	coid int,
 	cxid int,
-	oid int,
+	oid int NOT NULL,
 	wid int,
 	lid int,
 	PRIMARY KEY (rid, sid, ptime)
 );
 CREATE TABLE workouts
 (
-	wid SERIAL,
-	wtime varchar(255),
+	wid SERIAL NOT NULL,
+	wtime varchar(255) NOT NULL,
 	rest varchar(255),
 	goal_split varchar(255),
 	PRIMARY KEY (wid)
 );
 CREATE TABLE shells
 (
-	sid SERIAL,
-	sname varchar(255),
-	manufacturer varchar(255),
-	model varchar(255),
-	syear varchar(255),
+	sid SERIAL NOT NULL,
+	sname varchar(255) NOT NULL,
+	manufacturer varchar(255) NOT NULL,
+	model varchar(255) NOT NULL,
+	syear varchar(255) NOT NULL,
 	PRIMARY KEY (sid)
 );
 CREATE TABLE winners
 (
-	rid int,
-	ptime timestamp,
-	sid int,
+	rid int NOT NULL,
+	ptime timestamp NOT NULL,
+	sid int NOT NULL,
 	cxid int,
 	PRIMARY KEY (rid, ptime)
 );
 CREATE TABLE coxswains
 (
-	cxid SERIAL,
-	cxname varchar(255),
+	cxid SERIAL NOT NULL,
+	cxname varchar(255) NOT NULL,
 	PRIMARY KEY (cxid)
 );
 CREATE TABLE regattas
 (
-	regid SERIAL,
-	regname varchar(255),
-	rdate date,
+	regid SERIAL NOT NULL,
+	regname varchar(255) NOT NULL,
+	rdate date NOT NULL,
 	PRIMARY KEY (regid)
 );
 CREATE TABLE event
 (
-	event_num int,
-	regid int,
+	event_num int NOT NULL,
+	regid int NOT NULL,
 	PRIMARY KEY (event_num, regid)
 );
 CREATE TABLE regatta_boats
 (
-	regid int,
-	rid int,
-	event_num int,
-	sid int,
-	oid int,
+	regid int NOT NULL,
+	rid int NOT NULL,
+	event_num int NOT NULL,
+	sid int NOT NULL,
+	oid int NOT NULL,
 	cxid int,
 	PRIMARY KEY (regid, rid, event_num)
 );
